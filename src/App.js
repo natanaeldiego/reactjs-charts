@@ -1,26 +1,100 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import Chart from "react-apexcharts";
+import Donut from "./Donut";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      options: {
+        chart: {
+          id: "basic-bar"
+        },
+        xaxis: {
+          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999]
+        }
+      },
+      series: [
+        {
+          name: "series-1",
+          data: [30, 40, 45, 50, 49, 60, 70, 91]
+        }
+      ]
+    };
+  }
+
+  render() {
+    return (
+      <div className="app">
+        <div className="row" style={{ display: "flex" }}>
+          <div className="mixed-chart">
+            <Chart
+              options={this.state.options}
+              series={this.state.series}
+              type="bar"
+              width="500"
+            />
+          </div>
+          <div className="mixed-chart">
+            <Chart
+              options={this.state.options}
+              series={this.state.series}
+              type="line"
+              width="500"
+            />
+          </div>
+          <div className="mixed-chart">
+            <Chart
+              options={this.state.options}
+              series={this.state.series}
+              type="area"
+              width="500"
+            />
+          </div>
+        </div>
+        <div className="row" style={{ display: "flex" }}>
+          <div className="mixed-chart">
+            <Chart
+              options={this.state.options}
+              series={this.state.series}
+              type="histogram"
+              width="500"
+            />
+          </div>
+          <div className="mixed-chart">
+            <Chart
+              options={this.state.options}
+              series={this.state.series}
+              type="radar"
+              width="500"
+            />
+          </div>
+          <div className="mixed-chart">
+            <Chart
+              options={this.state.options}
+              series={this.state.series}
+              type="scatter"
+              width="500"
+            />
+          </div>
+        </div>
+        <div className="row" style={{ display: "flex" }}>
+          <div className="mixed-chart">
+            <Chart
+              options={this.state.options}
+              series={this.state.series}
+              type="heatmap"
+              width="500"
+            />
+          </div>
+          <div className="mixed-chart">
+            <Donut />
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;
